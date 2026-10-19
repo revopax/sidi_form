@@ -38,6 +38,54 @@ Vercel toma la configuracion de `.env.production` al compilar; no hace falta def
 
 ## Uso En El Evento
 
-- Abre el enlace de Vercel en cada dispositivo antes del evento para que la app quede cacheada.
-- Haz una prueba con Wi-Fi apagado para confirmar que el formulario carga y guarda registros.
-- Cuando vuelva internet, la app sincronizara automaticamente en segundo plano.
+### Importante: la primera carga debe ser con internet
+
+El formulario solo funciona sin conexion despues de haberse abierto al menos una vez con internet en cada dispositivo. En esa primera carga el navegador descarga y guarda la aplicacion, el fondo y el icono. A partir de ese momento se pueden capturar registros sin conexion.
+
+Cada dispositivo guarda sus propios registros pendientes; no se comparten entre dispositivos.
+
+### Instalar el icono en cada dispositivo
+
+Antes de instalar, abre la URL del formulario con internet y espera a que cargue por completo.
+
+**iPad / iPhone (Safari)**
+
+1. Abre la URL del formulario en Safari (no funciona desde Chrome en iOS).
+2. Toca el boton de compartir (cuadro con flecha hacia arriba).
+3. Selecciona `Agregar a pantalla de inicio`.
+4. Confirma con `Agregar`.
+
+**Android (Chrome)**
+
+1. Abre la URL del formulario en Chrome.
+2. Toca el menu de tres puntos en la esquina superior derecha.
+3. Selecciona `Instalar aplicacion` o `Agregar a pantalla principal`.
+4. Confirma con `Instalar`.
+
+**Laptop / Desktop (Chrome o Edge)**
+
+1. Abre la URL del formulario en Chrome o Edge.
+2. Haz clic en el icono de instalar que aparece al final de la barra de direcciones, o abre el menu del navegador y selecciona `Instalar Registro SIDI`.
+3. Confirma con `Instalar`. La app se abre en su propia ventana y queda disponible en el escritorio o menu de aplicaciones.
+
+En Safari para Mac usa `Archivo > Agregar al Dock`.
+
+### Antes del evento
+
+1. Instala el icono en cada dispositivo siguiendo los pasos anteriores.
+2. Abre la app desde el icono con internet una vez mas para confirmar que carga.
+3. Haz una prueba sin conexion: activa modo avion (o apaga el Wi-Fi), abre la app desde el icono y captura un registro de prueba.
+4. Vuelve a conectar internet, deja la app abierta unos segundos y confirma que el registro aparece en HubSpot.
+
+### Durante el evento
+
+- Abre siempre el formulario desde el icono instalado.
+- Los asistentes solo ven el formulario; al enviar aparece un mensaje de confirmacion aunque no haya internet.
+- Los registros se guardan en el dispositivo y se envian a HubSpot automaticamente al abrir la app, al recuperar la conexion y cada minuto mientras la app este abierta.
+
+### Despues del evento
+
+1. Conecta cada dispositivo a internet.
+2. Abre la app desde el icono y dejala abierta un par de minutos para que envie los registros pendientes.
+3. Verifica en HubSpot que las submissions del evento aparezcan completas.
+4. No borres los datos del navegador ni desinstales la app hasta confirmar que todos los registros llegaron a HubSpot; los registros pendientes se perderian.
