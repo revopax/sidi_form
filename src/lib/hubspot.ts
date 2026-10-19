@@ -13,7 +13,6 @@ type HubSpotField = {
 type HubSpotContext = {
   pageUri: string;
   pageName: string;
-  hutk?: string;
 };
 
 const getHubSpotEndpoint = () => {
@@ -35,21 +34,10 @@ const toHubSpotFields = (values: FormValues): HubSpotField[] =>
       value: typeof value === "boolean" ? String(value) : value,
     }));
 
-const getCookieValue = (name: string): string | undefined => {
-  const cookie = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith(`${encodeURIComponent(name)}=`));
-
-  return cookie?.split("=")[1] ? decodeURIComponent(cookie.split("=")[1]) : undefined;
-};
-
 const getHubSpotContext = (): HubSpotContext => {
-  const hutk = getCookieValue("hubspotutk");
-
   return {
     pageUri: window.location.href,
     pageName: document.title,
-    ...(hutk ? { hutk } : {}),
   };
 };
 
