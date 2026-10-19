@@ -4,7 +4,7 @@ Aplicacion web para capturar registros en tablets y laptops aunque no haya inter
 
 ## Configuracion
 
-1. Configura las variables en `.env.local`:
+1. La conexion con HubSpot esta en `.env.production`, versionado en el repositorio porque ambos IDs son publicos (viajan en el JavaScript del navegador). Para desarrollo local se usa `.env.local` con los mismos valores:
 
 ```bash
 VITE_HUBSPOT_PORTAL_ID=24172997
@@ -34,7 +34,7 @@ npm run build
 npm run preview
 ```
 
-Para Vercel, configura las mismas variables de entorno en el proyecto y despliega el repositorio.
+Vercel toma la configuracion de `.env.production` al compilar; no hace falta definir variables en el proyecto. Si se definen en Vercel, tienen prioridad sobre el archivo.
 
 ## Uso En El Evento
 

@@ -33,6 +33,7 @@ const runSync = async (): Promise<SyncResult> => {
       await markSubmissionSent(submission.id);
       result.sent += 1;
     } catch (error) {
+      console.error("No se pudo enviar el registro a HubSpot.", submission.id, error);
       await markSubmissionFailed(
         submission.id,
         error instanceof Error ? error.message : "Error desconocido al sincronizar.",
