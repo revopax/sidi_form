@@ -10,6 +10,11 @@ type HubSpotField = {
   value: string;
 };
 
+const hiddenTrackingFields: HubSpotField[] = [
+  { name: "utm_campaign", value: "Eventos" },
+  { name: "utm_content", value: "form_offline" },
+];
+
 type HubSpotContext = {
   pageUri: string;
   pageName: string;
@@ -23,8 +28,8 @@ const getHubSpotEndpoint = () => {
   return `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;
 };
 
-const toHubSpotFields = (values: FormValues): HubSpotField[] =>
-  Object.entries(values)
+const toHubSpotFields = (values: FormValues): HubSpotField[] => {
+  const visibleFields = Object.entries(values)
     .filter(
       ([name, value]) =>
         allowedFieldNames.has(name) && value !== "" && value !== false && value !== undefined && value !== null,
@@ -33,6 +38,9 @@ const toHubSpotFields = (values: FormValues): HubSpotField[] =>
       name,
       value: typeof value === "boolean" ? String(value) : value,
     }));
+
+  return [...visibleFields, ...hiddenTrackingFields];
+};
 
 const getHubSpotContext = (): HubSpotContext => {
   return {

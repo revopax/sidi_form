@@ -18,6 +18,11 @@ VITE_HUBSPOT_FORM_ID=a2964f29-32d5-4612-9507-1302147f047e
 - `email`: Correo corporativo
 - `hs_whatsapp_phone_number`: Numero de WhatsApp
 
+Tambien se envian estos campos ocultos para rastreo de origen:
+
+- `utm_campaign`: Eventos
+- `utm_content`: form_offline
+
 El campo `email` valida formato y bloquea dominios personales comunes para aceptar solo correos corporativos. La lista se puede ampliar en `src/lib/emailValidation.ts`.
 
 ## Desarrollo
